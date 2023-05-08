@@ -114,6 +114,11 @@ docker build -f myOtherDockerfile .
 curl example.com/remote/Dockerfile | docker build -f - .
 ```
 
+```shell
+# Update local images with certain format and value
+docker images --format "{{.Repository}}:{{.Tag}}" | grep '/local/' | grep ':latest' | xargs -L1 docker pull
+```
+
 ## Docker Networking
 
 ```shell
@@ -178,7 +183,7 @@ docker image push --all-tags registry-host:5000/myname/myimage
 
 | Example                             | Description             |
 | ----------------------------------- | ----------------------- |
-| `docker stop -f $(docker ps -a -q)` | Stopping all containers |
+| `docker stop $(docker ps -a -q)` | Stopping all containers |
 | `docker rm -f $(docker ps -a -q)`   | Removing all containers |
 | `docker rmi -f $(docker images -q)` | Removing all images     |
 
