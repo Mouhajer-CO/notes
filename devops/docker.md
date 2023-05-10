@@ -23,8 +23,14 @@ Parameter `<container>` can be container id (if distinct use 2/3 digits) or name
 | `docker diff <container>`           | Lists the changes made to a container.           |
 
 ```shell
+# Create container on fly
+docker run -it --rm -p 3030:3031 -v $(pwd):/app -w="/app" node bash
+# Inside the container working directory run the `npm init -y` ...
+# docker run ... node:18-alpine sh -c "npm install && npm start"
+# docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
 # Create and run a container in background
-docker run -d -p 80:80 docker/getting-started
+docker run -d -p 8080:80 docker/getting-started
 
 - `-d` - Run the container in detached mode
 - `-p 80:80` - Map port 80 to port 80 in the container
