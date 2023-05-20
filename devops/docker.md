@@ -295,6 +295,39 @@ volumes:
     db-data:
 ```
 
+## MISC
+
+```yml
+FROM node:18
+RUN apt-get update && apt-get install -y jq
+WORKDIR /app
+COPY . /app
+CMD ["./script.sh"]
+```
+
+```bash
+#!/bin/bash
+
+# dependencies.json -> {"dependencies":[]}
+dependencies=$(/usr/bin/jq -c '.dependencies[]' ./dependencies.json)
+
+# Loop over the dependencies
+for dependency in $dependencies
+do
+  TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
+  file1=$(echo "$dependency" | jq -r '.file1')
+  file_name=$(echo "$dependency" | jq -r '.file_name')
+  echo "Contents: $file1 $file_name and $TIMESTAMP"
+done
+
+# Keep container alive after script logic is completed
+while true
+do
+    echo "Sleep 10 seconds."
+    sleep 10
+done
+```
+
 ## Links
 
 - [docker](https://docs.docker.com/get-started/)
