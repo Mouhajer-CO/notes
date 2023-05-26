@@ -5,7 +5,7 @@ const ORGANIZATION = process.argv[2] || "";
 const FILE_NAME = process.argv[3] || "./repos.json";
 const GITHUB_KEY = process.env.GITHUB_KEY || "";
 
-const filterRepos = (repos = [], key = 'ssh_url') => repos.map( (r) => r[key] );
+const filterRepos = (repos = [], key = 'clone_url') => repos.map( (r) => r[key] );
 const saveToFile = async (fileName, data) => {
     await fs.promises.writeFile(fileName, JSON.stringify({'repos': data}))
         .then(() => console.log(`Saved data to ${fileName}.`))
