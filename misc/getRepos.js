@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const PER_PAGE = 100;
 const ORGANIZATION = process.argv[2] || "";
@@ -12,16 +12,16 @@ const saveToFile = async (fileName, data) => {
         .catch(err => console.error(`Error while saving data to ${fileName}: ${err.message}`));
 }
 
+const headers = { 'headers': { 'Authorization': `Bearer ${GITHUB_KEY}` } };
 let organizationRepos = [];
 const getOrganizationRepos = async (page = 1) => {
-    if(ORGANIZATION && GITHUB_KEY){
+    if(ORGANIZATION) { // && GITHUB_KEY){
         const repoUrl = `https://api.github.com/orgs/${ORGANIZATION}/repos?page=${page}&per_page=${PER_PAGE}`;
-        const headers = { 'headers': { 'Authorization': `Bearer ${GITHUB_KEY}` } };
-        return await fetch( repoUrl, headers )
+        return await fetch( repoUrl ) // , headers )
             .then( jsonData => jsonData.json() )
             .then( repos => {
                 console.log(`getOrganizationRepos from ${ORGANIZATION}, page ${page}, retrieved ${repos?.length}`);
-                organizationRepos = organizationRepos.concat(repos); //filterRepos(repos));
+                organizationRepos = organizationRepos.concat(filterRepos(repos));
                 return (repos?.length) ? getOrganizationRepos(page + 1) : organizationRepos;
             })
             .catch( error => {
@@ -34,9 +34,9 @@ const getOrganizationRepos = async (page = 1) => {
 if(!ORGANIZATION){
     console.error(`GitHub organization is missing`);
 }
-if(!GITHUB_KEY){
-    console.error(`Access Token/Github key is missing`);
-}
+// if(!GITHUB_KEY){
+//     console.error(`Access Token/Github key is missing`);
+// }
 
 // node --experimental-fetch ./getRepos.js ORG
 (async () => {
