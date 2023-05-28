@@ -32,6 +32,7 @@ const init = () => {
             for (const element of jsonData['repos']) {
                 const command = `git clone ${element}`;
                 await executeCommand(command);
+                await new Promise(resolve => setTimeout(resolve, 5000));
             }
         } catch (error) {
             console.error('Error parsing JSON:', error);
