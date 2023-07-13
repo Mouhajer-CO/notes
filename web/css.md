@@ -52,9 +52,34 @@
 
 There are a wide variety of CSS selectors available, allowing for fine-grained precision when selecting elements to style.
 
+### Selector
+
+link to [selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
+
+```css
+h1 { }
+#job-title { }
+
+/* Chaining Selector */
+div.hero { }
+div > p { }
+
+/* Attribute selectors */
+a[href="https://example.com"]
+{ }
+
+/* Pseudo-classes and pseudo-elements */
+p::first-line { }
+
+/* First Child Selector */
+p:first-child {
+  font-weight: bold;
+}
+```
+
 ### Type selector
 
-A type selector is sometimes referred to as a tag name selector or element selector because it selects an HTML tag/element in your document. In the example below, we have used the span, em and strong selectors.
+A type selector is sometimes referred to as a tag name selector or element selector because it selects an HTML tag/element in your document.
 
 ```css
 span {
@@ -104,33 +129,6 @@ Overrides all previous styling rules.
 ```css
 .post-title {
   color: blue !important;
-}
-```
-
-### Selector
-
-link to [selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors)
-
-```css
-h1 {
-}
-#job-title {
-}
-/* Chaining Selector */
-div.hero {
-}
-div > p {
-}
-/* Attribute selectors */
-a[href="https://example.com"]
-{
-}
-/* Pseudo-classes and pseudo-elements */
-p::first-line {
-}
-/* First Child Selector */
-p:first-child {
-  font-weight: bold;
 }
 ```
 
