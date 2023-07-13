@@ -14,39 +14,35 @@ Some have selfclosing tags that do not have a content inside them, like `<br>`.
 - Block element are starting on a new line, and they take full width available.
 All tags can have attributes and they provide information about an element. They are placed within the start tag and they are formatted as key/value.
 
-```html
-The <!DOCTYPE html> declaration defines that this document is an HTML5 document
-The <html> element is the root element of an HTML page
-The <head> element contains meta information about the HTML page, it is the part that is not displayed in the web browser when the page is loaded. It contains information such as the page title, links to CSS (if you want to style your HTML content with CSS), links to custom favicons, links to script, and metadata (data about the HTML, such as who wrote it, and important keywords that describe the document).
-The <title> element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
-The <body> element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.
-The <h1> element defines a large heading (you have got, from <h1> to <h6> tags)
-The <p> element defines a paragraph
-The <a> element defines links and the link's destination is specified in the `href` attribute.
-The <hr> element is most often displayed as a horizontal rule and is used to separate content
-The <div> element defines a section in a document
-The <br> element inserts a single line break and does not have content. They are empty elements and empty elements do not have an end tag!
-```
+The `<!DOCTYPE html>` declaration defines that this document is an HTML5 document
+The `<html>` element is the root element of an HTML page
+The `<head>` element contains meta information about the HTML page, it is the part that is not displayed in the web browser when the page is loaded. It contains information such as the page title, links to CSS (if you want to style your HTML content with CSS), links to custom favicons, links to script, and metadata (data about the HTML, such as who wrote it, and important keywords that describe the document).
+The `<title>` element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
+The `<body>` element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.
+The `<h1>` element defines a large heading (you have got, from `<h1>` to `<h6>` tags)
+The `<p>` element defines a paragraph
+The `<a>` element defines links and the link's destination is specified in the `href` attribute.
+The `<hr>` element is most often displayed as a horizontal rule and is used to separate content
+The `<div>` element defines a section in a document
+The `<br>` element inserts a single line break and does not have content. They are empty elements and empty elements do not have an end tag!
 
-```html
-The <b> element defines bold text
-The <em> element defines emphasized text 
-The <i> element defines a part of text in an alternate voice or mood
-The <small> element defines smaller text
-The <strong> element defines important text
-The <sub> element defines subscripted text
-The <sup> element defines superscripted text
-The <ins> element defines inserted text
-The <del> element defines deleted text
-The <mark> element defines marked/highlighted text
+The `<b>` element defines bold text
+The `<em>` element defines emphasized text
+The `<i>` element defines a part of text in an alternate voice or mood
+The `<small>` element defines smaller text
+The `<strong>` element defines important text
+The `<sub>` element defines subscripted text
+The `<sup>` element defines superscripted text
+The `<ins>` element defines inserted text
+The `<del>` element defines deleted text
+The `<mark>` element defines marked/highlighted text
 
-The <abbr> element defines an abbreviation or acronym
-The <address> element defines contact information for the author/owner of a document
-The <bdo> element defines the text direction
-The <blockquote> element defines a section that is quoted from another source
-The <cite> element defines the title of a work
-The <q> element defines a short inline quotation
-```
+The `<abbr>` element defines an abbreviation or acronym
+The `<address>` element defines contact information for the author/owner of a document
+The `<bdo>` element defines the text direction
+The `<blockquote>` element defines a section that is quoted from another source
+The `<cite>` element defines the title of a work
+The `<q>` element defines a short inline quotation
 
 ## Comment
 
@@ -603,3 +599,54 @@ The viewport is the user's visible area of a web page. The viewport varies with 
 
 </html>
 ```
+
+## HTML5 Misc and Quick overview
+
+- A semantic element clearly describes its meaning to both the browser and the developer. New semantic elements like
+  - `<header>` - Defines a header for a document or a section
+  - `<nav>`- Defines a container for navigation links
+  - `<section>` - Defines a section in a document
+  - `<article>` - Defines an independent self-contained article
+  - `<aside>` - Defines content aside from the content (like a sidebar)
+  - `<footer>` - Defines a footer for a document or a section
+- New attributes of form elements like number, date, time, calendar, and range.
+- New graphic elements:
+  - `<svg>` Draw scalable vector graphics, is a container with several methods for drawing paths, boxes circles, text and graphic images. SVG is XML based, which means that every element is available within the SVG DOM. You can attach JavaScript event handlers for an element.
+
+```html
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+</svg>
+```
+
+- `<canvas>` Draw graphics, on the fly, is only a container for graphics. Canvas is rendered pixel by pixel. In canvas, once the graphic is drawn, it is forgotten by the browser. If its position should be changed, the entire scene needs to be redrawn, including any objects that might have been covered by the graphic. You must use JavaScript to actually draw the graphics
+`{var c = document.getElementById("myCanvas"); var ctx = c.getContext("2d"); ctx.moveTo(0, 0); ctx.lineTo(200, 100); ctx.stroke(); }`
+
+- **HTML5 Geolocation API** is used to get the geographical position of a user (navigator.geolocation.getCurrentPosition()).
+- **HTML5 Drag and Drop**. It is when you "grab" an object and drag it to a different location.
+- **HTML5 Web Storage**, web applications can store data locally within the user's browser. Before HTML5, application data had to be stored in cookies, included in every server request. Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance. Unlike cookies, the storage limit is far larger and information is never transferred to the server.
+Web storage is per origin (per domain and protocol). All pages, from one origin, can store and access the same data. HTML web storage provides two objects for storing data on the client:
+  - window.localStorage - stores data with no expiration date
+  - window.sessionStorage - stores data for one session (data is lost when the browser tab is closed).
+- **HTML5 Web Workers** is a JavaScript running in the background, independently of other scripts, without affecting the performance of the page. You can continue to do whatever you want: clicking, selecting things, etc., while the web worker runs in the background.
+- **HTML5 Server-Sent Events**. A server-sent event is when a web page automatically gets updates from a server
+
+### WHATWG
+
+- WHATWG (Web Hypertext Application Technology Working Group) was formed in 2004. The WHATWG wanted to develop HTML, consistent with how the web was used, while being backward compatible with older versions of HTML.
+- The WHATWG (Web Hypertext Application Technology Working Group) is a community that maintains and develops web standards, including DOM, Fetch, and HTML. Employees of Apple, Mozilla, and Opera established WHATWG in 2004.
+- WHATWG maintains the HTML and DOM Living Standards. W3C facilitates community work directly in the WHATWG repositories.
+
+### XHTML
+
+- XHTML: stands for Extensible HyperText Markup Language, is almost identical to HTML, but stricter and it is supporteed by almost all browser.
+
+### HTML Screen Readers
+
+- HTML Screen Readers is a software program that reads the HTML code, converts the text, and allows the user to "listen" to the content. Screen readers are useful for people who are visually impaired or learning disabled.
+
+### HTML Character Sets
+
+- To display an HTML page correctly, the browser must know what character set (encoding) to use.
+- UTF-8, a character in UTF8 can be from 1 to 4 bytes long. UTF-8 can represent any character in the Unicode standard. UTF-8 is backwards compatible with ASCII. UTF-8 is the preferred encoding for e-mail and web pages
+- Unicode Consortium develops the Unicode Standard. Their goal is to replace the existing character sets with its standard Unicode Transformation Format (UTF).
