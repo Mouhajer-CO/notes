@@ -33,12 +33,10 @@ const execGitCommand = (gitCommand, dir, gitCommandKey) => {
             if (stderr) return reject({'Directory': dir.split('/').slice(-2).join('/'), 'Details': stderr});
 
             if(gitCommandKey === "get-branches") {
-                // const reposName = stdout.trim().replace("\n* ", ",");
-                // if( !['* master', '* develop'].includes(reposName) ) return resolve({'Directory': dir.split('/').slice(-2).join('/'), 'Repos': reposName});
-                // else return resolve("master/develop");
                 return resolve({'Directory': dir.split('/').slice(-2).join('/'), 'Repos': stdout.trim().replace("\n* ", ",")});
             }else {
-                return resolve({'Directory': dir.split('/').slice(-2).join('/'), 'Status': stdout});
+                // return resolve({'Directory': dir.split('/').slice(-2).join('/'), 'Status': stdout});
+                return resolve("done");
             }
         });
     });
@@ -46,24 +44,25 @@ const execGitCommand = (gitCommand, dir, gitCommandKey) => {
 
 // Git
 const setGitCommand = async (dir, gitCommandKey) => {
-
     const gitCommands = {
         'get-branches': `git -C ${dir} branch --contains HEAD`,
         'remove-untracked-files-check': `git -C ${dir} clean -fd --dry-run`,
         'remove-untracked-files': `git -C ${dir} clean -fd`,
         'reset': `git -C ${dir} reset --hard HEAD`,
+        'restore': `git -C ${dir} restore .`,
         'pull': `git -C ${dir} pull`
     }
 
     return await execGitCommand(gitCommands[gitCommandKey], dir, gitCommandKey);
 }
 
-const init = (reposFolder, gitCommandKey) => {
+const init = async (reposFolder, gitCommandKey) => {
     try {
         if(!gitCommandKey) console.error("Git command missing!");
         else if (reposFolder && isDirectory(path.join(__dirname, reposFolder))) {
             const repos = flatDeep(getReposDirectoryRecursively(path.join(__dirname, reposFolder)), Infinity);
 
+            /*
             const promises = repos.map(repo => {
                 return setGitCommand(repo, gitCommandKey);
             });
@@ -71,6 +70,15 @@ const init = (reposFolder, gitCommandKey) => {
             Promise.allSettled(promises) //all(promises)
                     .then(files => console.table(files) )//console.log(JSON.stringify(files, null, 4)) )
                     .catch(error => console.error(`error: ${error.message}`));
+            */
+
+            for (const repo of repos) {
+                try {
+                    console.log(repo, await setGitCommand(repo, gitCommandKey));
+                } catch (error) {
+                    console.error(error);
+                }
+            }
         } else {
             console.error("Folder path missing!");
         }
