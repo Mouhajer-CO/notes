@@ -328,6 +328,24 @@ do
 done
 ```
 
+```Dockerfile
+# app directory
+FROM nginx:stable
+# COPY . /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+```yml
+version: '3'
+services:
+  app:
+    build: ./app
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/usr/share/nginx/html
+```
+
 ## Links
 
 - [docker](https://docs.docker.com/get-started/)
