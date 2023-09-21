@@ -34,7 +34,19 @@ The pair coding exercise for HTML, CSS and JavaScript
 
 ## JS
 
-<!-- WIP -->
+- Link to [JavaScript Variables](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_variables1)
+- Link to [JavaScript Operators](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_operators1)
+- Link to [JavaScript Data Types](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_datatypes1)
+- Link to [JavaScript Comparison and Logical Operators](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_comparisons1)
+- Link to [JavaScript if, else, and else if](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_conditions1)
+- Link to [JavaScript Switch Statement](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_switch1)
+- Link to [JavaScript For Loop](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_loops1)
+- Link to [JavaScript While Loop](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_loop_while1)
+- Link to [JavaScript Functions](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_functions1)
+- Link to [JavaScript Objects](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_objects1)
+- Link to [JavaScript Strings](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_strings1)
+- Link to [JavaScript Arrays](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_arrays1)
+- ...
 
 ## Resources and Examples
 
